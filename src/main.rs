@@ -76,7 +76,7 @@ enum EcRamAccess {
 static EC_RAM_METHOD: Lazy<Mutex<EcRamAccess>> = Lazy::new(|| {
     let vendor = fs::read_to_string("/sys/class/dmi/id/board_vendor").unwrap_or("asdf".into());
     let name = fs::read_to_string("/sys/class/dmi/id/board_name").unwrap_or("asdf".into());
-    let supported_devices: [&str; 4] = ["AIR", "AIR Pro", "AYANEO 2", "GEEK"];
+    let supported_devices: [&str; 5] = ["AIR", "AIR Pro", "AYANEO 2", "GEEK", "AB05-AMD"];
     let is_supported = vendor.trim() == "AYANEO" && supported_devices.contains(&name.trim());
 
     if !is_supported {
